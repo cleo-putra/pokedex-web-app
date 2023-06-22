@@ -2,6 +2,7 @@ export interface AppTypeInitialState {}
 
 export interface PokemonTypeInitialState {
   allPokemon: undefined | genericPokemonType[];
+  randomPokemons: undefined | generatedPokemonType[];
 }
 
 export interface genericPokemonType {
@@ -26,3 +27,6 @@ export interface pokemonTypeInterface {
   }
 }
 
+export interface userPokemonsType extends generatedPokemonType {
+  firebaseId?: string;
+}
