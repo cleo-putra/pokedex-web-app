@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, {useEffect} from 'react'
 import Wrapper from '../sections/Wrapper';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
@@ -9,6 +11,9 @@ import { debounce } from '../scss/utils/Debounce';
 function Search() {
   const dispatch = useAppDispatch();
   const {allPokemon, randomPokemons} = useAppSelector(({pokemon}) => pokemon);
+
+  
+  console.log(allPokemon, randomPokemons, 'search2');
 
   useEffect(() => {
     dispatch(getInitialPokemonData());

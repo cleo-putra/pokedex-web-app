@@ -1,9 +1,14 @@
 import React from 'react'
 import { pokemonTypeInterface, userPokemonsType } from '../utils/Types'
 import { useNavigate } from 'react-router-dom'
+import { setPokemonTab } from '../app/slices/AppSlice';
+import { setCurrentPokemon } from '../app/slices/PokemonSlice';
+import { pokemonTabs } from '../utils/Constants';
+import { useAppDispatch } from '../app/hooks';
 
 function PokemonCardGrid({pokemons} : {pokemons: userPokemonsType[]}) {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   return (
     <div className='pokemon-card-grid-container'>
@@ -19,7 +24,11 @@ function PokemonCardGrid({pokemons} : {pokemons: userPokemonsType[]}) {
                   alt='pokemon'
                   className='pokemon-card-image'
                   loading="lazy"
-                  onClick={() => navigate(`/pokemon/${data.id}`)}
+                  onClick={() => {
+                    dispatch(setPokemonTab(pokemonTabs.description));
+                    dispatch(setCurrentPokemon(undefined));
+                    navigate(`/pokemon/${data.id}`)
+                  }}
                 />
                 <div className="pokemon-card-types">
                   {data.types.map(

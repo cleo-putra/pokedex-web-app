@@ -7,6 +7,7 @@ import "./scss/index.scss";
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Pokemon from './pages/Pokemon'
 import Search from './pages/Search'
+import About from './pages/About'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route element={<Search />} path="/search" />          
           <Route element={<Pokemon />} path="/pokemon/:id" />
           <Route element={<Navigate to="/pokemon/1" />} path="*" />
+          <Route element={<About />} path="/about" />          
         </Routes>
         <Footer />
       </div>

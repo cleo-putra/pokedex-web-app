@@ -8,7 +8,7 @@ export const getPokemonData = createAsyncThunk(
   "pokemon/randomPokemon", 
   async(pokemons:genericPokemonType[]) => {
     try {
-      // console.log({pokemons}, "from reducer");
+      console.log({pokemons}, "from reducer");
       const pokemonsData: generatedPokemonType[] = [];
       for await (const pokemon of pokemons) {
         const {data}: {
@@ -38,10 +38,11 @@ export const getPokemonData = createAsyncThunk(
           });
         }
       }
+      console.log(pokemonsData, 'dataq');
       return pokemonsData;
     } catch(err) {
       console.log(err);
     }
 })
 
-//1.51.05
+//5.41.05

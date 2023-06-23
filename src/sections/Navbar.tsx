@@ -15,6 +15,10 @@ function Navbar() {
       name: 'Pokemon',
       route: '/pokemon',
     },
+    {
+      name: 'About',
+      route: '/about',
+    },
   ];
 
   useEffect(()=> {
@@ -40,8 +44,8 @@ function Navbar() {
       <div className="data">
         <ul>
           <div className="underline"></div>
-          <div className="underline"></div>
-          <div className="underline"></div>
+          {/* <div className="underline"></div>
+          <div className="underline"></div> */}
           {navigationRoutes.map(({ name, route }, index) => {
             return (
               <Link
