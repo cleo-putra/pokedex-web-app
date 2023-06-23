@@ -59,7 +59,7 @@ function Navbar() {
         </ul>
       </div>
       <div className='block'>
-        <GiHamburgerMenu />
+        {/* <GiHamburgerMenu /> */}
       </div>
     </nav>
   )

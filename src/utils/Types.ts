@@ -1,4 +1,5 @@
 export interface AppTypeInitialState {
+  isLoading: boolean;
   currentPokemonTab: string;
 }
 

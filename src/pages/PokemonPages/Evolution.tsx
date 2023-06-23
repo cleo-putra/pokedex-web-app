@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { getPokemonData } from '../../app/reducers/getPokemonData';
 import PokemonCardGrid from '../../components/PokemonCardGrid';
+import Loader from '../../components/Loader';
 
 function Evolution() {
 
@@ -24,7 +25,11 @@ function Evolution() {
 
   return (
     <div className='page'>
-      {isLoaded && <PokemonCardGrid pokemons={randomPokemons!}/>}
+      {isLoaded ? (
+        <PokemonCardGrid pokemons={randomPokemons!} />
+      ) : (
+        <Loader />
+      )}
     </div>
   )
 }

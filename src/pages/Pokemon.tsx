@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, { useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Wrapper from "../sections/Wrapper";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
@@ -14,10 +14,14 @@ import CapableMoves from "./PokemonPages/CapableMoves";
 import Location from "./PokemonPages/Location";
 import { setPokemonTab } from "../app/slices/AppSlice";
 import { setCurrentPokemon } from "../app/slices/PokemonSlice";
+import Loader from "../components/Loader";
 
 function Pokemon() {
   const params = useParams();
   const dispatch = useAppDispatch();
+
+  const [isDataLoading, setIsDataLoading] = useState(true);
+
   const currentPokemonTab = useAppSelector(
     ({ app: { currentPokemonTab } }) => currentPokemonTab
   );
@@ -124,7 +128,9 @@ function Pokemon() {
           evolution,
           pokemonAbilities,
         })
-      );
+        
+        );
+        setIsDataLoading(false);
 
       console.log({
         id: data.id,
@@ -181,13 +187,15 @@ function Pokemon() {
   }, [params.id, getPokemonInfo]);
 
   return <div>
-    {currentPokemon && (
+    {!isDataLoading && currentPokemon ? (
       <>
         {currentPokemonTab === pokemonTabs.description && <Description />}
         {currentPokemonTab === pokemonTabs.evolution && <Evolution />}
         {currentPokemonTab === pokemonTabs.moves && <CapableMoves />}
         {currentPokemonTab === pokemonTabs.locations && <Location />}
       </>
+    ) : (
+      <Loader />
     )}
   </div>;
 }
