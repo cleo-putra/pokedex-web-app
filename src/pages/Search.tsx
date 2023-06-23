@@ -53,6 +53,8 @@ function Search() {
     }
   }
 
+  const handleChange = debounce((value: string) => getPokemon(value), 300);
+  
   return (
     <>
       {isLoading ? (
